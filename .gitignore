@@ -1,0 +1,32 @@
+# Systemowe i edytor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Node.js (np. jeśli używasz ESLint, Prettier, Vite)
+dist/
+.env
+node_modules/
+
+# Live Server / Vite / lokalny build
+*.log
+*.tmp
+*.cache
+*.local
+
+# Pliki tymczasowe
+*.swp
+*.swo
+*.bak
+
+# Pliki systemowe (Windows/Mac)
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# IDE (opcjonalne)
+.idea/
+*.iml
+
+# GitHub Pages (jeśli generujesz builda do `/docs`)
+docs/
