@@ -42,7 +42,7 @@ Projekt tworzony w oparciu o:
 
 ```bash
 # 1. Sklonuj repozytorium
-git clone https://github.com/twoje-uzytkownik/muzykotek.git
+git clone https://github.com/twoje-uzytkownik/MusicWeb.git
 
 # 2. Przejdź do folderu
 cd MusicWeb
