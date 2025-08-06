@@ -10,47 +10,46 @@ async function init() {
 
 //wywołujemy te init()
 
-import { getPosts, createPost } from './api.js';
-import { renderPostList } from './ui.js';
+import { getPosts, createPost } from "./api.js";
+import { renderPostList } from "./ui.js";
 
 async function init() {
-  try {
-    const posts = await getPosts();
-    renderPostList(posts);
-  } catch (error) {
-    console.error('Błąd podczas inicjalizacji aplikacji:', error);
-  }
+	try {
+		const posts = await getPosts();
+		renderPostList(posts);
+	} catch (error) {
+		console.error("Błąd podczas inicjalizacji aplikacji:", error);
+	}
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  init();
+document.addEventListener("DOMContentLoaded", () => {
+	init();
 
+	//G P T
+	const form = document.getElementById("post-form");
 
-  //G P T
-  const form = document.getElementById('post-form');
+	form.addEventListener("submit", async e => {
+		e.preventDefault();
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+		const title = document.getElementById("title").value.trim();
+		const content = document.getElementById("content").value.trim();
+		const author = document.getElementById("author").value.trim();
 
-    const title = document.getElementById('title').value.trim();
-    const content = document.getElementById('content').value.trim();
-    const author = document.getElementById('author').value.trim();
+		if (!title || !content || !author) {
+			alert("Wszystkie pola są wymagane!");
+			return;
+		}
 
-    if (!title || !content || !author) {
-      alert('Wszystkie pola są wymagane!');
-      return;
-    }
+		const newPost = {
+			title,
+			content,
+			author,
+			createdAt: new Date().toISOString(),
+		};
 
-    const newPost = {
-      title,
-      content,
-      author,
-      createdAt: new Date().toISOString()
-    };
-
-    await createPost(newPost);
-    const posts = await getPosts();
-    renderPostList(posts);
-    form.reset();
-  });
+		await createPost(newPost);
+		const posts = await getPosts();
+		renderPostList(posts);
+		form.reset();
+	});
 });
